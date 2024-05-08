@@ -1,7 +1,6 @@
 package product.data.repository
 
 import product.data.datasource.ProductDataSource
-import product.data.datasource.network.ProductNetworkSource
 import product.data.mapper.toModel
 import product.domain.models.Product
 import product.domain.repository.ProductRepository

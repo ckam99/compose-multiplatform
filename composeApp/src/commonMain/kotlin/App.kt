@@ -14,11 +14,31 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import grocery.composeapp.generated.resources.Res
 import grocery.composeapp.generated.resources.compose_multiplatform
+import product.data.datasource.network.ProductRemoteSource
+import product.data.repository.ProductRepositoryImpl
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 @Preview
 fun App() {
+
+    val repo = ProductRepositoryImpl(ProductRemoteSource())
+
+    var text : String by remember {
+        mutableStateOf("")
+    }
+
+    LaunchedEffect(true){
+       val result = repo.GetAll(2)
+        if (result.isFailure){
+            text = result.exceptionOrNull().toString()
+            print(text)
+        }else{
+            text = result.getOrNull().toString()
+            print(text)
+        }
+    }
+
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -32,6 +52,7 @@ fun App() {
                     Text("Compose: $greeting")
                 }
             }
+            Text(text)
         }
     }
 }
