@@ -23,11 +23,12 @@ import product.domain.models.Product
 import product.ui.viewmodels.ProductScreenModel
 
 
-class ProductScreen : Screen {
+class ProductScreen() : Screen {
     val repo = ProductRepositoryImpl(ProductRemoteSource())
 
     @Composable
     override fun Content() {
+//        val screenModel = getScreenModel<ProductScreenModel>()
         val screenModel = rememberScreenModel {
             ProductScreenModel(repo)
         }
@@ -48,8 +49,7 @@ class ProductScreen : Screen {
                 LazyColumn(
                     modifier = Modifier.padding(20.dp).fillMaxSize()
                 ) {
-                    items((state as State.Result<List<Product>>).data,
-                          key = {it.id}){ product->
+                    items((state as State.Result<List<Product>>).data, key = {it.id}){ product->
                         Text(product.title)
                     }
                 }
