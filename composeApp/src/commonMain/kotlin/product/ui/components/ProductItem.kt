@@ -1,2 +1,0 @@
-package product.ui.components
-
