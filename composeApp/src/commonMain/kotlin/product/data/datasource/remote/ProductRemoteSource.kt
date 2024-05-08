@@ -31,7 +31,8 @@ class ProductRemoteSource : ProductDataSource {
 
     override suspend fun GetAll(limit: Int): Result<List<ProductDto>> {
         return try {
-            Result.success(httpClient.get("/products").body())
+            val url = "/products" + if (limit > 0) "?limit=$limit" else ""
+            Result.success(httpClient.get(url).body())
         } catch(ex: ClientRequestException) {
             println("Error: ${ex.response.status.description}")
             Result.failure(ex)
