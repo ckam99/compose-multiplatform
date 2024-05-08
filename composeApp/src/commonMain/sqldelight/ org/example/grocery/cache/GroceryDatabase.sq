@@ -1,0 +1,16 @@
+import kotlin.Boolean;
+
+CREATE TABLE products (
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    PRICE INTEGER DEFAULT 0,
+    category TEXT NOT NULL,
+    image TEXT
+);
+
+CREATE TABLE rating (
+    rate INTEGER DEFAULT 0,
+    count INTEGER DEFAULT 0,
+    product INTEGER NOT NULL
+);

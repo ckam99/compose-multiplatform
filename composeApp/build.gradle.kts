@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinSerialization)
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -34,6 +35,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.android)
 //            implementation(libs.koin.androidx.compose)
+            implementation(libs.sqlDelight.driver.android)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -51,9 +53,12 @@ kotlin {
             implementation(libs.voyager.screenmodel)
             implementation(libs.voyager.koin)
             implementation(libs.koin.core)
+
+            implementation("co.touchlab:stately-common:2.0.7")
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sqlDelight.driver.native)
         }
     }
 }
@@ -92,4 +97,11 @@ android {
     }
 }
 
+sqldelight {
+    databases {
+        create("GroceryDatabase") {
+            packageName.set("org.example.grocery.cache")
+        }
+    }
+}
 

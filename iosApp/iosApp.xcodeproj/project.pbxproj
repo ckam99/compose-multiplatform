@@ -328,6 +328,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"-lsqlite3",
 					"$(inherited)",
 					"-framework",
 					composeApp,
@@ -359,6 +360,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = (
+					"-lsqlite3",
 					"$(inherited)",
 					"-framework",
 					composeApp,
