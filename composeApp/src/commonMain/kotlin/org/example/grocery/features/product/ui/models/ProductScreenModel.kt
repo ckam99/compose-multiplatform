@@ -1,4 +1,4 @@
-package org.example.grocery.features.product.ui.screens
+package org.example.grocery.features.product.ui.screens.models
 
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope

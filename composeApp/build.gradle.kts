@@ -34,7 +34,7 @@ kotlin {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.android)
-            implementation(libs.koin.androidx.compose)
+//            implementation(libs.koin.androidx.compose)
             implementation(libs.sqlDelight.driver.android)
         }
         commonMain.dependencies {
@@ -52,6 +52,7 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.voyager.screenmodel)
             implementation(libs.voyager.koin)
+            implementation(libs.voyager.transition)
             implementation(libs.koin.core)
             implementation(libs.kotlinx.datetime)
             implementation(libs.landscapist.coil3)

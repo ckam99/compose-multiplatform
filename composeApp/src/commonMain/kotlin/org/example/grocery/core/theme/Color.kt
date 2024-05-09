@@ -70,3 +70,6 @@ internal val md_theme_dark_scrim = Color(0xFF000000)
 
 
 internal val seed = Color(0xFF2C3639)
+
+val uiSurfaceColor= Color(0xFFF0F7F6)
+val uiMainColor = Color(0xFF05806B)

@@ -9,7 +9,8 @@ import org.example.grocery.features.product.data.datasource.ProductLocalSource
 import org.example.grocery.features.product.data.datasource.ProductRemoteSource
 import org.example.grocery.features.product.data.repository.ProductRepositoryImpl
 import org.example.grocery.features.product.domain.repository.ProductRepository
-import org.example.grocery.features.product.ui.screens.ProductScreenModel
+import org.example.grocery.features.product.ui.screens.models.ProductDetailScreenModel
+import org.example.grocery.features.product.ui.screens.models.ProductScreenModel
 
 fun productModule(dbDriverFactory: DatabaseDriverFactory) = module {
     single<SharedDatabase>{ SharedDatabase(dbDriverFactory) }
@@ -18,4 +19,5 @@ fun productModule(dbDriverFactory: DatabaseDriverFactory) = module {
     single<ProductDataSource> { ProductDataSource(local = get(), remote = get()) }
     single<ProductRepository> {ProductRepositoryImpl(dataSource = get(),)}
     factory { ProductScreenModel(repository = get()) }
+    factory { ProductDetailScreenModel(repository = get()) }
 }

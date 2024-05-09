@@ -22,10 +22,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import org.example.grocery.core.ui.State
 import org.example.grocery.features.product.domain.models.Product
 import org.example.grocery.features.product.ui.components.ProductCard
 import org.example.grocery.features.product.ui.components.ProductImage
+import org.example.grocery.features.product.ui.screens.models.ProductScreenModel
 
 class ProductScreen : Screen {
 
@@ -35,6 +38,7 @@ class ProductScreen : Screen {
         val state by screenModel.state.collectAsState()
         val isDark = isSystemInDarkTheme()
 
+        val navigator = LocalNavigator.current
 
         LaunchedEffect(isDark){
             println("is dark mode: $isDark")
@@ -71,7 +75,7 @@ class ProductScreen : Screen {
                                 modifier = Modifier.height(200.dp).padding(5.dp),
                                 product = it,
                             ){
-                                
+                                navigator?.push(ProductDetailScreen(it.id))
                             }
                         }
                     }

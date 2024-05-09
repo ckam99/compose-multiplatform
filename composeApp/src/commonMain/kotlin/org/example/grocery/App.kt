@@ -2,6 +2,7 @@ package org.example.grocery
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 import org.example.grocery.cache.GroceryDatabase
 import org.example.grocery.core.database.DatabaseDriverFactory
 import org.example.grocery.core.theme.AppTheme
@@ -16,7 +17,9 @@ import org.example.grocery.features.product.ui.screens.ProductScreen
 internal fun App(databaseFactory : DatabaseDriverFactory) {
     initKoin(databaseFactory)
     AppTheme {
-       Navigator(ProductScreen())
+       Navigator(ProductScreen()){
+           SlideTransition(it)
+       }
     }
 }
 
