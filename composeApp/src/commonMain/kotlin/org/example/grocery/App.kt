@@ -1,10 +1,10 @@
 package org.example.grocery
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
 import org.example.grocery.cache.GroceryDatabase
 import org.example.grocery.core.database.DatabaseDriverFactory
+import org.example.grocery.core.theme.AppTheme
 import org.example.grocery.features.product.di.productModule
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
@@ -14,10 +14,10 @@ import org.example.grocery.features.product.ui.screens.ProductScreen
 @Composable
 @Preview
 internal fun App(databaseFactory : DatabaseDriverFactory) {
-       initKoin(databaseFactory)
-       MaterialTheme {
-            Navigator(ProductScreen())
-       }
+    initKoin(databaseFactory)
+    AppTheme {
+       Navigator(ProductScreen())
+    }
 }
 
 fun initKoin(
