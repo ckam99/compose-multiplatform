@@ -21,6 +21,7 @@ class ProductDataSource(
     private suspend fun loadRemoveData() : Result<List<ProductDto>> {
         return try {
             val items = remote.GetAll().getOrDefault(listOf())
+            local.removeAll()
             items.forEach {
                 local.insert(it)
             }
