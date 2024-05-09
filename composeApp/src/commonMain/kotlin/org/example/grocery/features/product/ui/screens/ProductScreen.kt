@@ -14,23 +14,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.koin.getScreenModel
 import org.example.grocery.core.ui.State
-import org.example.grocery.features.product.data.datasource.remote.ProductRemoteSource
-import org.example.grocery.features.product.data.repository.ProductRepositoryImpl
 import org.example.grocery.features.product.domain.models.Product
 
 
-class ProductScreen() : Screen {
-    val repo = ProductRepositoryImpl(ProductRemoteSource())
+class ProductScreen : Screen {
 
     @Composable
     override fun Content() {
-//        val screenModel = getScreenModel<ProductScreenModel>()
-        val screenModel = rememberScreenModel {
-            ProductScreenModel(repo)
-        }
+        val screenModel = getScreenModel<ProductScreenModel>()
         val state by screenModel.state.collectAsState()
 
         when(state){

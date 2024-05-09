@@ -7,17 +7,17 @@ import org.example.grocery.features.product.domain.repository.ProductRepository
 
 
 class ProductRepositoryImpl(
-    val dataSource: ProductDataSource
+  private val dataSource: ProductDataSource
 ) : ProductRepository {
-    override suspend fun GetAll(limit: Int): Result<List<Product>> {
+    override suspend fun GetAll(limit: Long, reload: Boolean): Result<List<Product>> {
        return dataSource.runCatching {
-           this.GetAll(limit).getOrThrow().map { it.toModel() }
+           this.getAll(limit, reload).getOrThrow().map { it.toModel() }
        }
     }
 
-    override suspend fun FindById(id: Int): Result<Product> {
+    override suspend fun FindById(id: Long): Result<Product?> {
         return dataSource.runCatching {
-            this.FindById(id).getOrThrow().toModel() 
+            this.findById(id).getOrThrow()?.toModel()
         }
     }
 

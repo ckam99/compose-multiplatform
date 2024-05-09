@@ -3,24 +3,28 @@ package org.example.grocery
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import org.example.grocery.cache.GroceryDatabase
+import org.example.grocery.core.database.DatabaseDriverFactory
+import org.example.grocery.features.product.di.productModule
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
-import product.di.productModule
 import org.example.grocery.features.product.ui.screens.ProductScreen
 
 @Composable
 @Preview
-fun App() {
-       initKoin()
+internal fun App(databaseFactory : DatabaseDriverFactory) {
+       initKoin(databaseFactory)
        MaterialTheme {
             Navigator(ProductScreen())
-        }
+       }
 }
 
-fun initKoin(appDeclaration: KoinAppDeclaration = {}) {
+fun initKoin(
+    databaseFactory : DatabaseDriverFactory,
+    appDeclaration: KoinAppDeclaration = {}) {
   startKoin {
     appDeclaration()
-      modules(productModule)
+      modules(productModule(databaseFactory))
   }
 }

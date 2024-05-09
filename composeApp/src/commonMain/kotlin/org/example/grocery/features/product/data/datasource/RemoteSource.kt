@@ -1,4 +1,4 @@
-package org.example.grocery.features.product.data.datasource.remote
+package org.example.grocery.features.product.data.datasource
 
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -10,7 +10,7 @@ import kotlinx.serialization.json.Json
 import org.example.grocery.features.product.data.datasource.ProductDataSource
 import org.example.grocery.features.product.data.dto.ProductDto
 
-class ProductRemoteSource : ProductDataSource {
+class ProductRemoteSource  {
     
     companion object {
         const val BASEURL = "https://fakestoreapi.com"
@@ -28,7 +28,7 @@ class ProductRemoteSource : ProductDataSource {
         }
     }
 
-    override suspend fun GetAll(limit: Int): Result<List<ProductDto>> {
+     suspend fun GetAll(limit: Long = 0): Result<List<ProductDto>> {
         return try {
             val url = "/products" + if (limit > 0) "?limit=$limit" else ""
             Result.success(httpClient.get(url).body())
@@ -43,7 +43,7 @@ class ProductRemoteSource : ProductDataSource {
         }
     }
 
-    override suspend fun FindById(id: Int): Result<ProductDto> {
+     suspend fun FindById(id: Int): Result<ProductDto> {
         return try {
             Result.success(httpClient.get("/products/$id").body())
         } catch (ex: Exception){

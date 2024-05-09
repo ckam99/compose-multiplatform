@@ -1,6 +1,5 @@
 package org.example.grocery.core.database
 
-import android.content.Context
 import app.cash.sqldelight.db.SqlDriver
 import app.cash.sqldelight.driver.android.AndroidSqliteDriver
 import org.example.grocery.cache.GroceryDatabase
