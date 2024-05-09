@@ -1,0 +1,25 @@
+import kotlin.Boolean;
+
+CREATE TABLE ProductEntity (
+    id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    price REAL NOT NULL DEFAULT 0,
+    category TEXT NOT NULL,
+    image TEXT NOT NULL
+);
+
+insertProduct:
+INSERT INTO ProductEntity(id, title, description, price, category, image) VALUES(?,?,?,?,?,?);
+
+getAllProducts:
+SELECT * FROM ProductEntity;
+
+getListProducts:
+SELECT * FROM ProductEntity LIMIT :limit;
+
+getProductById:
+SELECT * FROM ProductEntity WHERE id = :id;
+
+removeAllProducts:
+DELETE FROM ProductEntity;
