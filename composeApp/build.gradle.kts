@@ -53,6 +53,7 @@ kotlin {
             implementation(libs.voyager.screenmodel)
             implementation(libs.voyager.koin)
             implementation(libs.koin.core)
+            implementation(libs.kotlinx.datetime)
 
             implementation("co.touchlab:stately-common:2.0.7")
         }
