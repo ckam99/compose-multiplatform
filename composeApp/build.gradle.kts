@@ -34,7 +34,7 @@ kotlin {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.android)
-//            implementation(libs.koin.androidx.compose)
+            implementation(libs.koin.androidx.compose)
             implementation(libs.sqlDelight.driver.android)
         }
         commonMain.dependencies {
@@ -58,7 +58,7 @@ kotlin {
             implementation(libs.landscapist.coil3)
             implementation(libs.landscapist.palette)
 
-            implementation("co.touchlab:stately-common:2.0.7")
+            implementation(libs.stately.common)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)

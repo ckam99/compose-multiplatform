@@ -12,8 +12,10 @@ import org.example.grocery.features.product.domain.repository.ProductRepository
 import org.example.grocery.features.product.ui.screens.models.ProductDetailScreenModel
 import org.example.grocery.features.product.ui.screens.models.ProductScreenModel
 
-fun productModule(dbDriverFactory: DatabaseDriverFactory) = module {
-    single<SharedDatabase>{ SharedDatabase(dbDriverFactory) }
+//fun productModule(dbDriverFactory: DatabaseDriverFactory) = module {
+val  productModule = module {
+//    single<SharedDatabase>{ SharedDatabase(dbDriverFactory) }
+    single<SharedDatabase>{ SharedDatabase(driverFactory = get()) }
     single<ProductLocalSource> {ProductLocalSource(database = get())}
     single<ProductRemoteSource> {ProductRemoteSource()}
     single<ProductDataSource> { ProductDataSource(local = get(), remote = get()) }

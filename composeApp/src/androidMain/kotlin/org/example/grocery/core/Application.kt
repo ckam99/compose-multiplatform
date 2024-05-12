@@ -1,6 +1,7 @@
 package org.example.grocery.core
 
 import android.app.Application
+import org.example.grocery.core.di.KoinInitializer
 
 
 class AndroidApp : Application() {
@@ -13,9 +14,6 @@ class AndroidApp : Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-//        startKoin {
-//            androidContext(this@MainApplication)
-//            modules(productModule)
-//        }
+        KoinInitializer(this.baseContext).init()
     }
 }
